@@ -23,7 +23,7 @@ export default class ManageJob extends React.Component {
             },
             filter: {
                 showActive: true,
-                showClosed: true,
+                showClosed: false,
                 showDraft: true,
                 showExpired: true,
                 showUnexpired: true
@@ -40,7 +40,7 @@ export default class ManageJob extends React.Component {
 
 
     init() {
-        debugger;
+        
         let loaderData = TalentUtil.deepCopy(this.state.loaderData)
         //loaderData.isLoading = false;
         this.setState({ loaderData });//comment this
@@ -85,12 +85,10 @@ export default class ManageJob extends React.Component {
             success: function (res) {
                 console.log(res);
                 this.setState({ loadJobs: res.myJobs, totalPages: Math.ceil(res.totalCount / 6) });
-                //console.log(res);
-                callback()
+                //console.log(res);              
             }.bind(this),
             error: function (res) {
-                //console.log(res.message);    
-                callback()
+                //console.log(res.message);                    
             }
         })
         //this.init()
@@ -120,6 +118,7 @@ export default class ManageJob extends React.Component {
     }
 
     render() {
+        //Returning TODO Filters(No funtionalities) and Pagination + element <JobSummaryCard>
         return (
             <React.Fragment>
                 <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
