@@ -45,15 +45,12 @@ export default class ManageJob extends React.Component {
         //loaderData.isLoading = false;
         this.setState({ loaderData });//comment this
         loaderData.isLoading = false;
-        //console.log(this.state.loaderData)
+
         //set loaderData.isLoading to false after getting data
         this.loadData(() =>
             this.setState({ loaderData })
         )
         
-        //console.log(this.state.loadJobs)
-        //console.log(this.state.loaderData)
-        //console.log(this.state.loadJobs);
     }
 
     componentDidMount() {
@@ -123,6 +120,7 @@ export default class ManageJob extends React.Component {
             <React.Fragment>
                 <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
                     <div className="ui container"><h1>List of Jobs</h1>
+                        {/*Filters functions to be done*/}
                         <div className="ui container"><Icon name='filter' />Filter: <Dropdown text='Choose filter' inline dropdown /> <Icon name='calendar' />Sort by date: <Dropdown text='Newest First' inline dropdown />  </div>
                         <JobSummaryCard jobs={this.state.loadJobs} />
                     </div>
